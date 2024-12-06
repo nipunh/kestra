@@ -1,0 +1,57 @@
+id: if
+namespace: io.kestra.tests
+
+inputs:
+  - id: if1
+    type: BOOLEAN
+
+  - id: if2
+    type: BOOLEAN
+
+  - id: if3
+    type: BOOLEAN
+
+tasks:
+  - id: parallel
+    type: io.kestra.plugin.core.flow.Parallel
+    concurrent: 4
+    tasks:
+      - id: if1
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ inputs.if1 }}"
+        then:
+          - id: hello1
+            type: io.kestra.plugin.core.log.Log
+            message: "Hello World!"
+      - id: if2
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ inputs.if2 }}"
+        then:
+          - id: hello2
+            type: io.kestra.plugin.core.log.Log
+            message: "Hello World!"
+      - id: if3
+        type: io.kestra.plugin.core.flow.If
+        condition: "{{ inputs.if3 }}"
+        then:
+          - id: hello3
+            type: io.kestra.plugin.core.log.Log
+            message: "Hello World!"
+      - id: hello4
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
+      - id: hello5
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
+      - id: hello6
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
+      - id: hello7
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
+      - id: hello8
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
+      - id: hello9
+        type: io.kestra.plugin.core.log.Log
+        message: "Hello World!"
